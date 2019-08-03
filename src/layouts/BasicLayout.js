@@ -2,7 +2,9 @@ import ProLayout,{PageHeaderWrapper} from '@yjtec/pro-layout';
 import styles from './BasicLayout.less';
 import React, { Component } from 'react';
 import logo from '../assets/logo.svg';
+import RightContent from '@/components/GlobalHeader/RightContent';
 import {connect} from 'dva';
+import { formatMessage } from 'umi-plugin-react/locale';
 @connect((loading)=>({
 
 }))
@@ -18,11 +20,14 @@ class BasicLayout extends Component{
     return (
       <React.Fragment>
         <ProLayout
+          className={styles.layout}
           {...this.props}
           logo={logo}
-          rightContentRender = {(rightProps) => <div>right content</div>}
+          formatMessage={formatMessage}
+          rightContentRender = {(rightProps) => <RightContent {...rightProps} />}
         >
-          <PageHeaderWrapper>{children}</PageHeaderWrapper>
+          {/*<PageHeaderWrapper>{children}</PageHeaderWrapper>*/}
+          {children}
         </ProLayout>
       </React.Fragment>
     )

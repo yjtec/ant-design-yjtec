@@ -4,8 +4,8 @@ export default [
     component: '../layouts/UserLayout',
     routes: [
       {
-        path: '/user',
-        component: './user',
+        path: '/user/login',
+        component: './user/Login',
       },
     ],
   }, // app
@@ -17,21 +17,29 @@ export default [
     routes: [
       {
         path: '/',
-        redirect: '/welcome/one',
+        name:"home",
+        icon:'home',
+        redirect: '/welcome',
       },
       {
         path: '/welcome',
         name: 'welcome',
         icon: 'smail',
-        authority: ['admin', 'user', 'bbb'], // routes: [
-        //   {
-        //     path: '/welcome/one',
-        //     name: 'analysis',
-        //     icon: 'smail',
-        //     component: './Welcome',
-        //   },
-        // ],
+        component: './Welcome',
+        authority: ['admin', 'user'],
+        routes:[
+          {
+            name:'one',
+            icon: 'smail',
+            path:'/welcome/one',
+            component:'./Welcome'
+          }
+        ]
       },
+      {
+        component:'404'
+      }
     ],
   },
+
 ];

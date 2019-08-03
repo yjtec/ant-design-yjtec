@@ -1,4 +1,3 @@
-import React from 'react';
 import { CURRENT } from './renderAuthorize';
 
 const checkPermissions = (authority, currentAuthority, target, Exception) => {

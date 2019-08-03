@@ -19,6 +19,9 @@ export default {
   lessLoaderOptions: {
     javascriptEnabled: true,
   },
+  manifest: {
+    basePath: '/',
+  },
   cssLoaderOptions: {
     modules: true,
     getLocalIdent: (context, localIdentName, localName) => {
