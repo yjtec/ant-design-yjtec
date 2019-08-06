@@ -5,6 +5,7 @@ import Link from 'umi/link';
 import { Checkbox, Alert, Icon } from 'antd';
 import styles from './index.less';
 import Login from '@/components/Login';
+import md5 from 'md5';
 const {Tab,UserName,Password,Mobile,Submit,Captcha} = Login;
 @connect(({ login, user,loading })=>({
   login,
@@ -31,10 +32,14 @@ class LoginPage extends Component{
     const { type } = this.state;
     if (!err) {
       const { dispatch } = this.props;
+      const postData = {
+        ...values,
+        pwd:md5(values.pwd)
+      }
       dispatch({
         type: 'login/login',
         payload: {
-          ...values,
+          ...postData,
           type,
         },
       });
@@ -89,7 +94,7 @@ class LoginPage extends Component{
               ]}
             />
             <Password
-                name="password"
+                name="pwd"
                 placeholder={`${formatMessage({ id: 'user.login.password' })}`}
                 rules={[
                   {

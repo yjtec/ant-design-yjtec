@@ -27,6 +27,7 @@ class AuthComponent extends React.Component{
       location={pathname:''},
       user
     } = this.props;
+    //console.log(route.routes);
     const {currentUser} = user;
     const {routes=[]} = route;
     const isLogin = currentUser && currentUser.name;
